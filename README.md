@@ -6,6 +6,41 @@ Zero plumbing. Define your plans, configure M-Pesa, and your billing loop is sor
 
 ---
 
+## Architecture
+
+```bash
+    smart-billing/
+        ├── src/
+        │   ├── BillingServiceProvider.php      # Auto-discovery, publishes, registers
+        │   ├── Concerns/Billable.php           # Trait for your User model
+        │   ├── Contracts/PaymentDriver.php     # Interface for all payment drivers
+        │   ├── Drivers/MpesaDriver.php         # Full Daraja API — STK Push, C2B, Refunds
+        │   ├── Facades/Billing.php
+        │   ├── Services/
+        │   │   ├── BillingManager.php          # Extensible driver manager
+        │   │   ├── PaymentService.php          # Orchestrates initiate → callback → renew
+        │   │   ├── SubscriptionService.php     # subscribe, cancel, resume, changePlan
+        │   │   └── DunningService.php          # Retry logic, suspension, cancellation
+        │   ├── Models/                         # 5 Eloquent models with scopes & helpers
+        │   ├── Http/Controllers/               # Admin UI + REST API + Webhook handlers
+        │   ├── Events/                         # 8 events for your listeners
+        │   ├── Notifications/RenewalReminder
+        │   ├── Console/Commands/               # billing:install/renewals/dunning/reminders
+        │   └── Support/PaymentResult.php       # Typed result value object
+        ├── config/billing.php                  # All configurable — driver, dunning, reminders
+        ├── database/migrations/                # 6 tables created in one migration
+        ├── resources/views/admin/              # Dark-themed admin UI — dashboard, all CRUD
+        └── routes/web.php + api.php
+```
+
+- **Drivers**: M-Pesa (Daraja) out of the box, with a simple interface to add Stripe, Flutterwave, etc.
+- **Transactions**: Every payment attempt is stored with a unique reference, status, and metadata
+- **Subscriptions**: Plan-based billing with trial periods, grace periods, and dunning support
+- **Admin UI**: View transactions, manage plans, and monitor subscription statuses
+- **Scheduler**: Daily commands to process renewals, send reminders, and handle dunning
+
+---
+
 ## Requirements
 
 | | |
