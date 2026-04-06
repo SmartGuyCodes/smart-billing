@@ -18,6 +18,7 @@ Route::prefix($prefix)
         Route::get('/', [Admin\DashboardController::class, 'index'])->name('dashboard');
 
         // Plans
+        Route::get('plans/add', [Admin\PlanController::class, 'add'])->name('plans.add');
         Route::resource('plans', Admin\PlanController::class);
         Route::patch('plans/{plan}/toggle', [Admin\PlanController::class, 'toggle'])->name('plans.toggle');
 

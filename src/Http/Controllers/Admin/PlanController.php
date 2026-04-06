@@ -8,6 +8,11 @@ use SmartGuyCodes\Billing\Models\BillingPlan;
 
 class PlanController extends Controller
 {
+    public function add()
+    {
+        return view('billing::admin.plans.add');
+    }
+
     public function index()
     {
         $plans = BillingPlan::withCount(['subscriptions' => fn($q) => $q->active()])
