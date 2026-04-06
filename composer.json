@@ -1,0 +1,50 @@
+{
+    "name": "smartguycodes/billing",
+    "description": "A configurable Laravel billing package for SaaS businesses in Kenya. Handles M-Pesa STK Push, subscriptions, dunning, and renewal reminders.",
+    "type": "library",
+    "keywords": ["laravel", "mpesa", "billing", "saas", "kenya", "payments", "subscriptions"],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "SmartGuyCodes",
+            "email": "begin@smartguycodes.co.ke",
+            "homepage": "https://smartguycodes.co.ke",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": "^8.2",
+        "laravel/framework": "^11.0|^12.0",
+        "guzzlehttp/guzzle": "^7.0"
+    },
+    "require-dev": {
+        "orchestra/testbench": "^9.0",
+        "pestphp/pest": "^3.0",
+        "pestphp/pest-plugin-laravel": "^3.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "SmartGuyCodes\\Billing\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "SmartGuyCodes\\Billing\\Tests\\": "tests/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "SmartGuyCodes\\Billing\\BillingServiceProvider"
+            ],
+            "aliases": {
+                "Billing": "SmartGuyCodes\\Billing\\Facades\\Billing"
+            }
+        }
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}
