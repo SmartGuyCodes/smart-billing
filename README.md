@@ -16,7 +16,7 @@ Smart Billing Package is a modular Laravel package that brings advanced billing 
 1. **Require the package via Composer:**
 
     ```bash
-    composer require smartguycodes/smart-billing
+    composer require smartguycodes/billing
     ```
 
 2. **Publish and run migrations:**
