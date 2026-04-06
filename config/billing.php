@@ -46,6 +46,23 @@ return [
             'retry_delay'       => 300, // seconds between retries
         ],
 
+        'coop' =>[
+            'environment' => getenv('COOP_ENV') ?: 'sandbox', // sandbox | production
+            'operator_code' => getenv('COOP_OPERATOR_CODE'),
+            'auth_token' => getenv('COOP_AUTH_TOKEN'),
+            'stk_push_url' => getenv('COOP_STK_PUSH_URL'),
+            'stk_push_callback_url' => getenv('COOP_STK_PUSH_CALLBACK_URL'),
+            'stk_txn_status_url' => getenv('COOP_STK_TXN_STATUS_URL'),
+        ],
+        
+        'airtel' => [
+            'environment'   => getenv('AIRTEL_ENV') ?: 'sandbox', // sandbox | production
+            'client_id'    => getenv('AIRTEL_CLIENT_ID'),
+            'client_secret'=> getenv('AIRTEL_CLIENT_SECRET'),
+            'shortcode'    => getenv('AIRTEL_SHORTCODE'),
+            'callback_url' => getenv('AIRTEL_CALLBACK_URL'),
+        ],
+
         'paypal' => [
             'client_id'     => getenv('PAYPAL_CLIENT_ID'),
             'secret'        => getenv('PAYPAL_SECRET'),
@@ -76,7 +93,6 @@ return [
             'secret_key'  => getenv('FLW_SECRET_KEY'),
             'secret_hash' => getenv('FLW_SECRET_HASH'),
         ],
-
     ],
 
     /*
@@ -162,9 +178,9 @@ return [
     |--------------------------------------------------------------------------
     */
     'admin' => [
-        'enabled'    => true,
-        'prefix'     => getenv('BILLING_ADMIN_PREFIX') ?: 'billing-admin',
-        'middleware' => ['web', 'auth', 'billing.admin'],
+        'enabled'    => getenv('BILLING_DASHBOARD_ENABLED') ?: true,
+        'prefix'     => getenv('BILLING_DASHBOARD_PATH') ?: 'billing-admin',
+        'middleware' => explode(',', getenv('BILLING_DASHBOARD_MIDDLEWARE') ?: 'web,auth,billing.admin'),
         'per_page'   => 25,
     ],
 

@@ -43,7 +43,7 @@ Smart Billing Package is a modular Laravel package that brings advanced billing 
 
 - Integrate billing features into your Laravel app using provided facades, models, and API endpoints.
 - Access the billing dashboard at `/billing` (if enabled).
-- Refer to the [documentation](https://github.com/SmartGuyCodes/smart-billing#readme) for advanced usage and API details.
+- Refer to the [documentation](https://github.com/SmartGuyCodes/docs/index.md) for advanced usage and API details.
 
 ## Contributing
 
