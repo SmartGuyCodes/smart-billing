@@ -365,6 +365,17 @@ If you prefer config-driven plans over database plans, set `BILLING_PLANS_SOURCE
 
 ---
 
+## Usage
+
+- Integrate billing features into your Laravel app using provided facades, models, and API endpoints.
+- Access the billing dashboard at `/billing` (if enabled).
+- Refer to the [documentation](https://github.com/SmartGuyCodes/smart-billing/blob/main/docs/index.md) for advanced usage and API details.
+
+## Contributing
+
+Contributions are welcome! Please open issues or submit pull requests to help improve the package.
+
 ## License
 
-MIT
+This package is open-sourced software licensed under the MIT License.
+
